@@ -1,0 +1,15 @@
+$TTL 2d
+@		IN SOA		infra.suse.lab.	root.infra.suse.lab. (
+				2019041400	; serial
+				3h		; refresh
+				1h		; retry
+				1w		; expiry
+				1d )		; minimum
+
+uaa.cap.suse.lab.	IN NS		infra-node.suse.lab.
+uaa.cap.suse.lab.	IN A		192.168.0.35
+uaa.cap.suse.lab.	IN A		192.168.0.36
+uaa.cap.suse.lab.	IN A		192.168.0.37
+uaa.cap.suse.lab.	IN A		192.168.0.38
+uaa.cap.suse.lab.	IN A		192.168.0.39
+*			IN CNAME	uaa.cap.suse.lab.

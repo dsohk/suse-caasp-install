@@ -1,0 +1,34 @@
+$TTL 2d
+@		IN SOA		infra-node.suse.lab.	root.infra-node.suse.lab. (
+				2019082400	; serial
+				3h		; refresh
+				1h		; retry
+				1w		; expiry
+				1d )		; minimum
+
+suse.lab.		IN NS		infra-node.suse.lab.
+infra			IN A		192.168.0.2
+infra-node		IN A		192.168.0.9
+ntp			IN CNAME	infra-node
+rmt			IN CNAME	infra-node
+registry		IN CNAME	infra-node
+freenas			IN A		192.168.0.5
+benyuen			IN A		192.168.0.7
+kvmhost1		IN A		192.168.0.10
+kvmhost2 		IN A		192.168.0.11
+caasp-lb1		IN A		192.168.0.31
+caasp-lb		IN CNAME	caasp-lb1
+caasp-m1		IN A		192.168.0.32
+caasp-m2 		IN A		192.168.0.33
+caasp-m3		IN A		192.168.0.34
+caasp-w1		IN A		192.168.0.35
+caasp-w2		IN A		192.168.0.36
+caasp-w3		IN A		192.168.0.37
+caasp-w4		IN A		192.168.0.38
+caasp-w5 		IN A		192.168.0.39
+prometheus		IN CNAME	caasp-w1
+prometheus-alertmanager	IN CNAME	caasp-w1
+grafana 		IN CNAME	caasp-w1
+caasp-client 		IN A	 	192.168.0.79
+developer		IN A		192.168.0.80
+opensusetbw		IN A		192.168.0.81

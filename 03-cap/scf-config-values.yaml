@@ -1,0 +1,41 @@
+# SUSE CAP 1.5 
+
+env:
+    # Domain for SCF. DNS for *.DOMAIN must point to a kube node's (not master)
+    # external ip address.
+    DOMAIN: cap.suse.lab
+
+    # UAA host/port that SCF will talk to. If you have a custom UAA
+    # provide its host and port here. If you are using the UAA that comes
+    # with the SCF distribution, simply use the two values below and
+    # substitute the cf-dev.io for your DOMAIN used above.
+    UAA_HOST: uaa.cap.suse.lab
+    UAA_PORT: 2793
+
+kube:
+    # The IP address assigned to the kube node pointed to by the domain.
+    #### the external_ip setting changed to accept a list of IPs, and was
+    #### renamed to external_ips
+    external_ips:
+      - 192.168.0.35
+      - 192.168.0.36
+      - 192.168.0.37
+      - 192.168.0.38
+      - 192.168.0.39
+    storage_class:
+      # Make sure to change the value in here to whatever storage class you use
+      persistent: "nfs-client"
+      shared: "nfs-client"
+    registry:
+      hostname: "registry.suse.com"
+      username: ""
+      password: ""
+    organization: "cap"
+    auth: rbac
+
+secrets:
+    # Password for user 'admin' in the cluster
+    CLUSTER_ADMIN_PASSWORD: Demo123$
+
+    # Password for SCF to authenticate with UAA
+    UAA_ADMIN_CLIENT_SECRET: topS$cr3t
