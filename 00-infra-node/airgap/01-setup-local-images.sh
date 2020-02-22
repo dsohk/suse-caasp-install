@@ -17,7 +17,7 @@ LOCAL_REGISTRY_URL=https://registry.suse.lab:5000
 # download the list of all images used by CaaSP4
 mkdir -p $LOCAL_DIR
 curl  $CAASP_IMAGE_LIST_URL -o $LOCAL_DIR/caasp-image-list.txt
-awk '{print $NF}' /tmp/caasp-image-list.txt | cut -c 7- | sed '/^$/d' | sort -u > $LOCAL_DIR/caasp-image-download.txt
+awk '{print $NF}' $LOCAL_DIR/caasp-image-list.txt | cut -c 7- | sed '/^$/d' | sort -u > $LOCAL_DIR/caasp-image-download.txt
 # use skopeo to transfer the full list of CaaSP images to local directory
 mkdir $LOCAL_DIR/skopeodata
 while read img; do
