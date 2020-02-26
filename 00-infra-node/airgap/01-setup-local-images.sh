@@ -6,7 +6,7 @@
 
 # Execute the following in External RMT (as root)
 # -------------------------------------
-# sudo SUSEConnect -d -p sle-module-containers/15.1/x86_64
+# sudo SUSEConnect -p sle-module-containers/15.1/x86_64
 # sudo zypper in helm-mirror skopeo
 
 CAASP_IMAGE_LIST_URL=https://documentation.suse.com/external-tree/en-us/suse-caasp/4/skuba-cluster-images.txt
@@ -36,7 +36,7 @@ rsync -avP $LOCAL_DIR root@INTERNAL-RMT:$LOCAL_DIR
 
 # Execute the following in Internal RMT
 # -------------------------------------
-# sudo SUSEConnect -d -p sle-module-containers/15.1/x86_64
+# sudo SUSEConnect -p sle-module-containers/15.1/x86_64
 # sudo zypper in skopeo
 
 SKOPEO_OPTS='--dest-tls-verify=false --src-tls-verify=false'
