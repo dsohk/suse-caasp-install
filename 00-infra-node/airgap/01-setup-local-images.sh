@@ -39,10 +39,11 @@ rsync -avP $LOCAL_DIR root@INTERNAL-RMT:$LOCAL_DIR
 # sudo SUSEConnect -d -p sle-module-containers/15.1/x86_64
 # sudo zypper in skopeo
 
+SKOPEO_OPTS='--dest-tls-verify=false --src-tls-verify=false'
 # upload all images from skopeo to local docker registry
-skopeo sync dir:$LOCAL_DIR/skopeodata/registry.suse.com docker://$LOCAL_REGISTRY_URL
+skopeo sync $SKOPEO_OPTS dir:$LOCAL_DIR/skopeodata/registry.suse.com docker://$LOCAL_REGISTRY_URL
 while read img; do
-  skopeo copy dir:$LOCAL_DIR/skopeodata/$img docker://$LOCAL_REGISTRY_URL
+  skopeo copy $SKOPEO_OPTS dir:$LOCAL_DIR/skopeodata/$img docker://$LOCAL_REGISTRY_URL
 done < $LOCAL_DIR/caasp-image-download.txt
 
 
