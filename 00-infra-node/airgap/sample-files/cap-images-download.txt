@@ -44,12 +44,10 @@ registry.suse.com/cap/scf-secret-generation:9d16624f9a6e8131119e3efbf6ff555f1482
 registry.suse.com/cap/scf-syslog-scheduler:d2aee32c52df5a9a93f34f5e6f729f31b03be7da 
 registry.suse.com/cap/scf-tcp-router:821f7f863c989a53ee00d65936360be2c2c05dc7 
 registry.suse.com/cap/scf-uaa:c2c5e587774a14e04c429288d10b9a84a42d48c4
-registry.suse.com/cap/infra-node:/tmp/suse/suse-charts # cat console/imagelist.txt 
 registry.suse.com/cap/stratos-console:2.7.0-35f5964bd-cap 
 registry.suse.com/cap/stratos-jetstream:2.7.0-35f5964bd-cap 
 registry.suse.com/cap/stratos-mariadb:2.7.0-35f5964bd-cap 
 registry.suse.com/cap/stratos-postflight-job:2.7.0-35f5964bd-cap
-registry.suse.com/cap/infra-node:/tmp/suse/suse-charts # cat metrics/imagelist.txt 
 registry.suse.com/cap/stratos-metrics-cf-exporter:1.1.2-85daaa2-cap 
 registry.suse.com/cap/stratos-metrics-firehose-exporter:1.1.2-85daaa2-cap 
 registry.suse.com/cap/stratos-metrics-firehose-init:1.1.2-85daaa2-cap 
