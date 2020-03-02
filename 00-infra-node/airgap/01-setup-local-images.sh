@@ -6,7 +6,7 @@
 
 # Execute the following in External RMT (as root)
 # -------------------------------------
-# sudo SUSEConnect -d -p sle-module-containers/15.1/x86_64
+# sudo SUSEConnect -p sle-module-containers/15.1/x86_64
 # sudo zypper in helm-mirror skopeo
 
 CAASP_IMAGE_LIST_URL=https://documentation.suse.com/external-tree/en-us/suse-caasp/4/skuba-cluster-images.txt
@@ -19,8 +19,8 @@ mkdir -p $LOCAL_DIR
 curl  $CAASP_IMAGE_LIST_URL -o $LOCAL_DIR/caasp-image-list.txt
 awk '{print $NF}' $LOCAL_DIR/caasp-image-list.txt | cut -c 7- | sed '/^$/d' | sort -u > $LOCAL_DIR/caasp-image-download.txt
 # use skopeo to transfer the full list of CaaSP images to local directory
-mkdir $LOCAL_DIR/skopeodata
 while read img; do
+  mkdir -p $LOCAL_DIR/skopeodata/$img
   skopeo copy docker://$img dir:$LOCAL_DIR/skopeodata/$img
 done < $LOCAL_DIR/caasp-image-download.txt
 
@@ -36,13 +36,14 @@ rsync -avP $LOCAL_DIR root@INTERNAL-RMT:$LOCAL_DIR
 
 # Execute the following in Internal RMT
 # -------------------------------------
-# sudo SUSEConnect -d -p sle-module-containers/15.1/x86_64
+# sudo SUSEConnect -p sle-module-containers/15.1/x86_64
 # sudo zypper in skopeo
 
+SKOPEO_OPTS='--dest-tls-verify=false --src-tls-verify=false'
 # upload all images from skopeo to local docker registry
-skopeo sync dir:$LOCAL_DIR/skopeodata/registry.suse.com docker://$LOCAL_REGISTRY_URL
+skopeo sync $SKOPEO_OPTS dir:$LOCAL_DIR/skopeodata/registry.suse.com docker://$LOCAL_REGISTRY_URL
 while read img; do
-  skopeo copy dir:$LOCAL_DIR/skopeodata/$img docker://$LOCAL_REGISTRY_URL
+  skopeo copy $SKOPEO_OPTS dir:$LOCAL_DIR/skopeodata/$img docker://$LOCAL_REGISTRY_URL
 done < $LOCAL_DIR/caasp-image-download.txt
 
 
