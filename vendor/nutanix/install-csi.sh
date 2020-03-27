@@ -1,7 +1,7 @@
 #! /bin/bash -ex
 
 # pre-requisite
-# install open-iscsi on all worker nodes
+# install open-iscsi on all worker nodes if not done (should have been installed in CaaSP4 default installation)
 # zypper in open-iscsi
 
 # download the CSI driver
