@@ -2,7 +2,7 @@
 
 git clone https://github.com/kubernetes-sigs/metrics-server
 cd metrics-server
-kubectl create -f deploy/1.8+/
+kubectl create -f deploy/kubernetes
 cd ..
 rm -rf metrics-server
 
