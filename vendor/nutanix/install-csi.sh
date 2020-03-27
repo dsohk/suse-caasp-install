@@ -1,8 +1,16 @@
 #! /bin/bash -ex
 
-# pre-requisite
-# install open-iscsi on all worker nodes if not done (should have been installed in CaaSP4 default installation)
-# zypper in open-iscsi
+# REPLACE the followng variables with the one from your environment
+export PRISM_IP=127.0.0.1
+export PRISM_PORT=9440
+export PRISM_ADMIN=admin
+export PRISM_PASS=password
+export PRISM_SECRETKEY=`echo -n "${PRISM_IP}:${PRISM_PORT}:${PRISM_ADMIN}:${PRISM_PASS}" | base64`
+export DATASERVICE_IP=192.168.0.10
+export DATASERVICE_PORT=3260
+export CONTAINER_NAME=Caasp
+# -- end of variables changes
+
 
 # download the CSI driver
 wget http://download.nutanix.com/csi/v1.1.0/csi-v1.1.0.tar.gz
@@ -23,7 +31,6 @@ kubectl apply -f csi-driver.yaml
 
 # create secret
 export YML=/tmp/ntnx-secret.yml
-export PRISM_SECRETKEY=`echo -n 'prism-ip:port:admin:pass' | base64`
 cat > ${YML} << EOF
 apiVersion: v1
 kind: Secret
@@ -40,8 +47,6 @@ rm ${YML}
 
 # create storage class
 export YML=/tmp/ntnx-sc.yml
-export DATASERVICE_IP=192.168.0.10
-export DATASERVICE_PORT=3260
 cat > ${YML} << EOF
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
@@ -60,7 +65,7 @@ parameters:
     csi.storage.k8s.io/controller-expand-secret-namespace: kube-system
     csi.storage.k8s.io/fstype: ext4
     dataServiceEndPoint: ${DATASERVICE_IP}:${DATASERVICE_PORT}
-    storageContainer: default-container-30293
+    storageContainer: ${CONTAINER_NAME}
     storageType: NutanixVolumes
 allowVolumeExpansion: true
 reclaimPolicy: Delete
