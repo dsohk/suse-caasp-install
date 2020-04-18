@@ -1,0 +1,38 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: nfs-claim1
+  finalizer: null
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: nfs-client
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: server
+spec:
+  replicas: 1
+  selector:
+    role: server
+  template:
+    metadata:
+      labels:
+        role: server
+    spec:
+      containers:
+      - name: server
+        image: nginx
+        volumeMounts:
+          - mountPath: /var/lib/www/html
+            name: mypvc
+      volumes:
+        - name: mypvc
+          persistentVolumeClaim:
+            claimName: nfs-claim1
+

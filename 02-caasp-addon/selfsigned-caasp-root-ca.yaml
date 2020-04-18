@@ -1,0 +1,11 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: suse-caasp-crt
+spec:
+  secretName: suse-caasp-cert
+  commonName: "SUSE CaaSP root CA"
+  isCA: true
+  issuerRef:
+    name: selfsigning-issuer
+    kind: ClusterIssuer

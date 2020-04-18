@@ -23,7 +23,7 @@ cd CSI-v1.1.0
 kubectl create -f ntnx-csi-rbac.yaml
 
 # deploy statefulset and daemonset
-kubectl create -f ntnx-csi-node.yaml
+kubectl create -f ntnx-csi-node-sles15sp1.yaml
 kubectl create -f ntnx-csi-provisioner.yaml
 
 # create CSI driver object

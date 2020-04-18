@@ -17,11 +17,10 @@ kube:
     #### the external_ip setting changed to accept a list of IPs, and was
     #### renamed to external_ips
     external_ips:
-      - 192.168.0.35
-      - 192.168.0.36
-      - 192.168.0.37
       - 192.168.0.38
       - 192.168.0.39
+      - 192.168.0.40
+      - 192.168.0.41
     storage_class:
       # Make sure to change the value in here to whatever storage class you use
       persistent: "nfs-client"
