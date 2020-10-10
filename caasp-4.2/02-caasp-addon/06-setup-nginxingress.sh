@@ -15,11 +15,13 @@ serviceAccount:
 # Publish services on port HTTP/80
 # Publish services on port HTTPS/443
 controller:
+  extraArgs:
+    v: 2
   service:
     type: LoadBalancer
 EOF
 
-helm install --name nginx-ingress --namespace kube-system stable/nginx-ingress --values ${YML}
+helm install --name nginx-ingress --namespace nginx-ingress stable/nginx-ingress --values ${YML}
 
 rm ${YML}
 

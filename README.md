@@ -1,8 +1,8 @@
-# Installation scripts for SUSE CaaSP/CAP
+# Installation scripts for SUSE CaaSP and CAP
 
-This is a set of scripts to quickly deploy SUSE CaaSP/CAP deployment.
+This is a set of scripts to quickly deploy SUSE CaaSP and CAP deployment.
 
-* SUSE Infra Node (RMT, DHCP/DNS/NTP, TFTP+Autoyast, NFS)
+* SUSE Infra Node (RMT, DNS, NTP, NFS)
 * SUSE CaaS Platform
 * SUSE Cloud Application Platform
 * Prometheus and Grafana for Infrastructure Monitoring

@@ -1,5 +1,9 @@
 #! /bin/bash -ex
 
+# nfs-server
+# > cat /etc/exports
+# /mnt/pool1 *(rw,no_root_squash,sync)
+
 NFSHOST=freenas.suse.lab
 NFSPATH=/mnt/pool1
 

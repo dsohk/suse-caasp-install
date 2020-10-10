@@ -3,7 +3,7 @@
 DOMAIN=suse.lab
 YML=/tmp/grafana-config-values.yaml
 
-git clone https://github.com/suse/caasp-monitoring
+# git clone https://github.com/suse/caasp-monitoring
 
 cat > ${YML} << EOF
 # Configure admin password

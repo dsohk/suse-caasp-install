@@ -11,16 +11,17 @@ env:
     # substitute the cf-dev.io for your DOMAIN used above.
     UAA_HOST: uaa.cap.suse.lab
     UAA_PORT: 2793
+    UAA_PUBLIC_PORT: 443
 
 kube:
     # The IP address assigned to the kube node pointed to by the domain.
     #### the external_ip setting changed to accept a list of IPs, and was
     #### renamed to external_ips
-    external_ips:
-      - 192.168.0.38
-      - 192.168.0.39
-      - 192.168.0.40
-      - 192.168.0.41
+    # external_ips:
+    #   - 192.168.0.38
+    #   - 192.168.0.39
+    #   - 192.168.0.40
+    #   - 192.168.0.41
     storage_class:
       # Make sure to change the value in here to whatever storage class you use
       persistent: "nfs-client"
@@ -38,3 +39,12 @@ secrets:
 
     # Password for SCF to authenticate with UAA
     UAA_ADMIN_CLIENT_SECRET: topS$cr3t
+
+    INTERNAL_CA_CERT: ~
+
+    INTERNAL_CA_CERT_KEY: ~
+
+ingress:
+  enabled: true
+  tls:
+
