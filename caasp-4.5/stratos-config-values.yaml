@@ -1,0 +1,17 @@
+# stratos
+env:
+  DOMAIN: cap.suse.lab
+  UAA_HOST: uaa.cap.suse.lab
+console:
+  service:
+    ingress:
+      enabled: true
+      # annotations:
+        # cert-manager.io/cluster-issuer: letsencrypt-prod
+      host: stratos.cap.suse.lab
+  techPreview: true
+  localAdminPassword: linux
+
+kube:
+  storage_class:
+    persistent: nfs-client
