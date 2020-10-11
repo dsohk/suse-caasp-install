@@ -1,6 +1,8 @@
 #! /bin/bash -ex
 
-sudo zypper install helm
+# setup helm 2
+
+sudo zypper in -y helm
 TILLER_VER=2.16.9
 kubectl create serviceaccount --namespace kube-system tiller
 kubectl create clusterrolebinding tiller --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
@@ -11,3 +13,12 @@ helm repo add suse https://kubernetes-charts.suse.com/
 helm repo list
 helm repo update
 helm search suse
+
+# setup helm 3
+
+sudo zypper in -y helm3
+helm3 repo add suse https://kubernetes-charts.suse.com/
+helm3 repo list
+helm3 search repo suse
+
+
