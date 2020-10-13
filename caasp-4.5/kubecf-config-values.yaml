@@ -10,6 +10,10 @@ credentials:
   uaa_admin_client_secret: linux
 
 features:
+  eirini:
+    enabled: true
+  autoscaler:
+    enabled: true
   embedded_database:
     enabled: true
   ingress:
