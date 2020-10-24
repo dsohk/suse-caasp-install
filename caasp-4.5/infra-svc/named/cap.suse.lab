@@ -1,0 +1,11 @@
+$TTL 2d
+@		IN SOA		caasp-mgmt.suse.lab.	root.caasp-mgmt.suse.lab. (
+				2019041400	; serial
+				3h		; refresh
+				1h		; retry
+				1w		; expiry
+				1d )		; minimum
+
+cap.suse.lab.	IN NS		caasp-mgmt.suse.lab.
+cap.suse.lab.	IN A		192.168.0.30
+*		IN CNAME	cap.suse.lab.
